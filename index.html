@@ -56,16 +56,24 @@
             text-transform: uppercase;
             outline: none;
         }
-        .image-placeholder {
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-style: italic;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 20px;
+        .img-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: block;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .img-container:hover img {
+            transform: scale(1.05);
+        }
+        /* Mobile Menu Overlay */
+        #mobileMenuOverlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
     </style>
 </head>
@@ -77,6 +85,7 @@
             piana <span class="text-xs block tracking-normal normal-case opacity-60">YOGA STUDIO</span>
         </div>
         
+        <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-wider">
             <a href="#about" data-i18n="nav-about" class="hover:text-pink-400 transition">About</a>
             <a href="#space" data-i18n="nav-space" class="hover:text-pink-400 transition">The Space</a>
@@ -92,24 +101,37 @@
 
             <a href="#" data-i18n="nav-book" class="bg-black text-white px-6 py-2 rounded-full hover:bg-pink-400 transition">Book Now</a>
         </div>
-        <button class="md:hidden text-2xl">☰</button>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">☰</button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenuOverlay" class="fixed inset-0 z-[60] bg-black text-white invisible opacity-0 flex flex-col items-center justify-center space-y-8 text-xl uppercase tracking-widest">
+        <button class="absolute top-6 right-6 text-3xl" onclick="toggleMobileMenu()">&times;</button>
+        <a href="#about" onclick="toggleMobileMenu()" data-i18n="nav-about">About</a>
+        <a href="#space" onclick="toggleMobileMenu()" data-i18n="nav-space">The Space</a>
+        <a href="#classes" onclick="toggleMobileMenu()" data-i18n="nav-classes">Classes</a>
+        <a href="#location" onclick="toggleMobileMenu()" data-i18n="nav-access">Access</a>
+        <div class="pt-4 flex space-x-4 text-sm border-t border-white/20 w-32 justify-center">
+            <button onclick="changeLangManually('en')" class="hover:text-pink-400">EN</button>
+            <span class="opacity-30">|</span>
+            <button onclick="changeLangManually('vi')" class="hover:text-pink-400">VI</button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative hero-min-h flex items-center justify-center pt-20 overflow-hidden concrete-texture">
         <div class="absolute inset-0 z-0">
-            <!-- [Image: スクリーンショット 2026-03-01 195856.jpg - Interior view with sunlight] -->
-            <div class="w-full h-full image-placeholder" style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3))">
-                [Image: View from inside through glass - スクリーンショット 2026-03-01 195856.jpg]
-            </div>
+            <img src="yoga (1).jpg" alt="Piana Studio Interior" class="w-full h-full object-cover opacity-60">
         </div>
         <div class="container mx-auto px-6 relative z-10 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
             <div class="fade-in bg-white/40 p-8 md:p-12 backdrop-blur-md rounded-sm border border-white/50 inline-block">
-                <h1 class="text-5xl md:text-7xl font-light leading-tight mb-6">
+                <h1 class="text-4xl md:text-7xl font-light leading-tight mb-6">
                     <span data-i18n="hero-title-1">Find Your</span> <br>
                     <span class="font-semibold italic accent-pink" data-i18n="hero-title-2">Inner Space</span>
                 </h1>
-                <p class="text-lg opacity-90 mb-8 max-w-md leading-relaxed" data-i18n="hero-desc">
+                <p class="text-base md:text-lg opacity-90 mb-8 max-w-md leading-relaxed mx-auto md:mx-0" data-i18n="hero-desc">
                     The silence of concrete and the openness of glass filled with light. A special place to breathe away from the hustle of District 7, HCMC.
                 </p>
                 <div class="flex justify-center md:justify-start space-x-4">
@@ -118,36 +140,36 @@
             </div>
             <div></div>
         </div>
-        <div class="absolute bottom-10 right-10 text-9xl font-bold opacity-5 pointer-events-none select-none">PIANA</div>
+        <div class="absolute bottom-10 right-10 text-7xl md:text-9xl font-bold opacity-5 pointer-events-none select-none">PIANA</div>
     </section>
 
     <!-- Founders Section -->
-    <section id="about" class="py-24 bg-white">
+    <section id="about" class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div class="relative group">
-                    <div class="w-full h-[600px] image-placeholder overflow-hidden shadow-2xl">
-                        [Image: Studio Entrance and Founders - Gemini_Generated_Image_9bcbqt9bcbqt9bcb.jpg]
+                    <div class="w-full h-[400px] md:h-[600px] shadow-2xl overflow-hidden rounded-sm">
+                        <img src="yoga (2).jpg" alt="Studio Founders" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-accent-pink text-white p-6 hidden md:block">
-                        <p class="text-xs tracking-widest uppercase mb-1">Founders</p>
-                        <p class="font-semibold italic">Welcome to our space</p>
+                    <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-accent-pink text-white p-4 md:p-6 hidden sm:block">
+                        <p class="text-[10px] md:text-xs tracking-widest uppercase mb-1">Founders</p>
+                        <p class="font-semibold italic text-sm md:text-base">Welcome to our space</p>
                     </div>
                 </div>
                 <div>
-                    <span class="accent-pink font-semibold tracking-widest uppercase text-sm mb-4 block" data-i18n="concept-tag">Our Concept</span>
-                    <h2 class="text-4xl font-light mb-8" data-i18n="concept-title">Architecture of Silence and Harmony</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-12" data-i18n="concept-desc">
+                    <span class="accent-pink font-semibold tracking-widest uppercase text-xs md:text-sm mb-4 block" data-i18n="concept-tag">Our Concept</span>
+                    <h2 class="text-3xl md:text-4xl font-light mb-6 md:mb-8" data-i18n="concept-title">Architecture of Silence and Harmony</h2>
+                    <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-8 md:mb-12" data-i18n="concept-desc">
                         "piana" merges minimalist spatial design with the spirituality of yoga. Inorganic concrete and organic light. In this contrast, we provide a time to face yourself.
                     </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                         <div>
                             <h3 class="font-semibold mb-2 italic" data-i18n="card1-title">Modern</h3>
                             <p class="text-sm text-gray-500" data-i18n="card1-desc">Latest props and urban, clean facilities.</p>
                         </div>
                         <div>
                             <h3 class="font-semibold mb-2 italic" data-i18n="card2-title">Minimal</h3>
-                            <p class="text-sm text-gray-500" data-i18n="card2-desc">Clear your mind in a space where everything unnecessary is stripped away.</p>
+                            <p class="text-sm text-gray-500" data-i18n="card2-desc">Everything unnecessary is stripped away.</p>
                         </div>
                     </div>
                 </div>
@@ -156,36 +178,36 @@
     </section>
 
     <!-- The Space / Architecture Section -->
-    <section id="space" class="py-24 concrete-texture overflow-hidden">
+    <section id="space" class="py-16 md:py-24 concrete-texture overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-light mb-4" data-i18n="space-title">The Architecture</h2>
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-light mb-4" data-i18n="space-title">The Architecture</h2>
                 <div class="w-20 h-1 bg-accent-pink mx-auto"></div>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="flex flex-col space-y-4">
-                    <div class="h-64 image-placeholder shadow-lg">
-                        [Image: Studio Elevation - スクリーンショット 2026-03-01 200046.jpg]
+                    <div class="h-64 shadow-lg overflow-hidden rounded-sm bg-white p-2">
+                        <img src="yoga (3).jpg" alt="Front Elevation" class="w-full h-full object-contain">
                     </div>
-                    <p class="text-xs uppercase tracking-widest opacity-50">Front Elevation</p>
+                    <p class="text-[10px] uppercase tracking-widest opacity-50">Front Elevation</p>
                 </div>
                 <div class="flex flex-col space-y-4">
-                    <div class="h-64 image-placeholder shadow-lg">
-                        [Image: 3D Aerial View - スクリーンショット 2026-03-01 200023.jpg]
+                    <div class="h-64 shadow-lg overflow-hidden rounded-sm">
+                        <img src="yoga (4).jpg" alt="3D Perspective" class="w-full h-full object-cover">
                     </div>
-                    <p class="text-xs uppercase tracking-widest opacity-50">3D Perspective</p>
+                    <p class="text-[10px] uppercase tracking-widest opacity-50">3D Perspective</p>
                 </div>
                 <div class="flex flex-col space-y-4">
-                    <div class="h-64 image-placeholder shadow-lg">
-                        [Image: Floor Plan - スクリーンショット 2026-03-01 200054.jpg]
+                    <div class="h-64 shadow-lg overflow-hidden rounded-sm bg-white p-2">
+                        <img src="yoga (5).jpg" alt="Floor Plan" class="w-full h-full object-contain">
                     </div>
-                    <p class="text-xs uppercase tracking-widest opacity-50">Floor Plan</p>
+                    <p class="text-[10px] uppercase tracking-widest opacity-50">Floor Plan</p>
                 </div>
             </div>
             
-            <div class="max-w-4xl mx-auto bg-white/50 p-8 backdrop-blur-sm">
-                <p class="text-center italic opacity-70 leading-relaxed" data-i18n="space-desc">
+            <div class="max-w-4xl mx-auto bg-white/50 p-6 md:p-8 backdrop-blur-sm">
+                <p class="text-center italic opacity-70 leading-relaxed text-sm md:text-base" data-i18n="space-desc">
                     Our studio is designed with precision to optimize flow, light, and sound. Every pillar, every glass pane is placed to create an environment where energy can circulate freely.
                 </p>
             </div>
@@ -193,42 +215,42 @@
     </section>
 
     <!-- Gallery Section (Actual Classes) -->
-    <section class="py-24 bg-white">
+    <section class="py-16 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="columns-1 md:columns-3 gap-4 space-y-4">
-                <div class="image-placeholder h-80 overflow-hidden group">
-                    [Image: Class Standing - スクリーンショット 2026-03-01 195924.jpg]
+            <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+                <div class="img-container h-80 overflow-hidden group">
+                    <img src="yoga (6).jpg" alt="Class Standing">
                 </div>
-                <div class="image-placeholder h-60 overflow-hidden group">
-                    [Image: Detail Leg/Mat - スクリーンショット 2026-03-01 195839.jpg]
+                <div class="img-container h-60 overflow-hidden group">
+                    <img src="yoga (7).jpg" alt="Detail Leg and Mat">
                 </div>
-                <div class="image-placeholder h-96 overflow-hidden group">
-                    [Image: Instructor Assist - スクリーンショット 2026-03-01 195831.jpg]
+                <div class="img-container h-96 overflow-hidden group">
+                    <img src="yoga (8).jpg" alt="Instructor Assistance">
                 </div>
-                <div class="image-placeholder h-64 overflow-hidden group">
-                    [Image: Shavasana - スクリーンショット 2026-03-01 195904.jpg]
+                <div class="img-container h-64 overflow-hidden group">
+                    <img src="yoga (9).jpg" alt="Shavasana Relaxation">
                 </div>
-                <div class="image-placeholder h-80 overflow-hidden group">
-                    [Image: Tree Pose Balance - スクリーンショット 2026-03-01 195916.jpg]
+                <div class="img-container h-80 overflow-hidden group">
+                    <img src="yoga (10).jpg" alt="Tree Pose Balance">
                 </div>
-                <div class="image-placeholder h-[450px] overflow-hidden group">
-                    [Image: Forward Fold Class - スクリーンショット 2026-03-01 195847.jpg]
+                <div class="img-container h-72 sm:h-[450px] overflow-hidden group">
+                    <img src="yoga (11).jpg" alt="Forward Fold Class">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Classes Info Section -->
-    <section id="classes" class="py-24 concrete-texture">
+    <section id="classes" class="py-16 md:py-24 concrete-texture">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16">
                 <div>
-                    <h2 class="text-4xl font-light" data-i18n="classes-title">Our Classes</h2>
-                    <p class="accent-pink mt-2 italic" data-i18n="classes-subtitle">Personalized guidance in a group setting</p>
+                    <h2 class="text-3xl md:text-4xl font-light" data-i18n="classes-title">Our Classes</h2>
+                    <p class="accent-pink mt-2 italic text-sm md:text-base" data-i18n="classes-subtitle">Personalized guidance in a group setting</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white p-8 border border-stone-200 hover:border-pink-300 transition group cursor-pointer">
                     <h3 class="text-xl font-light mb-4">Hatha</h3>
                     <p class="text-sm text-gray-500 mb-6" data-i18n="class1-desc">Foundation and alignment focus.</p>
@@ -254,25 +276,25 @@
     </section>
 
     <!-- Location Section -->
-    <section id="location" class="py-24 bg-stone-900 text-white">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 h-[400px] bg-stone-800 rounded-sm relative overflow-hidden flex items-center justify-center italic text-stone-600">
-                [Image: Map showing District 7, HCMC]
-                <div class="absolute top-4 left-4 bg-white text-black px-4 py-1 text-xs uppercase tracking-tighter">piana studio</div>
+    <section id="location" class="py-16 md:py-24 bg-stone-900 text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="order-2 md:order-1 h-[300px] md:h-[400px] bg-stone-800 rounded-sm relative overflow-hidden flex items-center justify-center italic text-stone-600 px-8 text-center">
+                [Google Map: District 7, Ho Chi Minh City]
+                <div class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-[10px] uppercase tracking-tighter">piana studio</div>
             </div>
-            <div class="order-1 md:order-2">
-                <span class="accent-pink font-semibold tracking-widest uppercase text-sm mb-4 block" data-i18n="visit-tag">Visit Us</span>
-                <h2 class="text-4xl font-light mb-8" data-i18n="visit-title">Quiet area in District 7</h2>
+            <div class="order-1 md:order-2 text-center md:text-left">
+                <span class="accent-pink font-semibold tracking-widest uppercase text-xs md:text-sm mb-4 block" data-i18n="visit-tag">Visit Us</span>
+                <h2 class="text-3xl md:text-4xl font-light mb-8" data-i18n="visit-title">Quiet area in District 7</h2>
                 <div class="space-y-6 opacity-80 font-light">
                     <div>
-                        <p class="text-xs uppercase tracking-widest mb-1 opacity-50" data-i18n="label-address">Address</p>
-                        <p>District 7, Ho Chi Minh City, Vietnam</p>
-                        <p class="text-sm mt-1" data-i18n="address-note">(Near Crescent Mall area)</p>
+                        <p class="text-[10px] uppercase tracking-widest mb-1 opacity-50" data-i18n="label-address">Address</p>
+                        <p class="text-sm md:text-base">District 7, Ho Chi Minh City, Vietnam</p>
+                        <p class="text-xs mt-1" data-i18n="address-note">(Near Crescent Mall area)</p>
                     </div>
                     <div>
-                        <p class="text-xs uppercase tracking-widest mb-1 opacity-50" data-i18n="label-hours">Open Hours</p>
-                        <p>Mon - Fri: 6:30 - 20:30</p>
-                        <p>Sat - Sun: 8:00 - 18:00</p>
+                        <p class="text-[10px] uppercase tracking-widest mb-1 opacity-50" data-i18n="label-hours">Open Hours</p>
+                        <p class="text-sm md:text-base">Mon - Fri: 6:30 - 20:30</p>
+                        <p class="text-sm md:text-base">Sat - Sun: 8:00 - 18:00</p>
                     </div>
                 </div>
             </div>
@@ -281,16 +303,16 @@
 
     <!-- Footer -->
     <footer class="bg-black text-white py-12 border-t border-stone-800">
-        <div class="container mx-auto px-6 flex flex-col md:row justify-between items-center text-sm opacity-50">
+        <div class="container mx-auto px-6 text-center text-xs opacity-50">
             <p>&copy; 2026 piana YOGA STUDIO. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- Booking Modal -->
     <div id="bookingModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6">
-        <div class="bg-white max-w-lg w-full p-10 rounded-sm">
+        <div class="bg-white max-w-lg w-full p-8 md:p-10 rounded-sm">
             <div class="flex justify-between items-start mb-6">
-                <h3 class="text-2xl font-light" data-i18n="modal-title">Reserve a Spot</h3>
+                <h3 class="text-xl md:text-2xl font-light" data-i18n="modal-title">Reserve a Spot</h3>
                 <button onclick="toggleModal()" class="text-2xl">&times;</button>
             </div>
             <form class="space-y-4">
@@ -391,25 +413,42 @@
                 }
             });
             document.documentElement.lang = lang;
+            document.getElementById('langSwitcher').value = lang;
+        }
+
+        function changeLangManually(lang) {
+            setLanguage(lang);
+            toggleMobileMenu();
         }
 
         document.getElementById('langSwitcher').addEventListener('change', (e) => {
             setLanguage(e.target.value);
         });
 
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            if (overlay.classList.contains('invisible')) {
+                overlay.classList.remove('invisible', 'opacity-0');
+                overlay.classList.add('visible', 'opacity-100');
+            } else {
+                overlay.classList.add('invisible', 'opacity-0');
+                overlay.classList.remove('visible', 'opacity-100');
+            }
+        }
+
         function toggleModal() {
             document.getElementById('bookingModal').classList.toggle('hidden');
         }
 
         function handleBooking() {
-            const lang = document.getElementById('langSwitcher').value;
+            const lang = document.documentElement.lang || 'en';
             alert(translations[lang]['alert-success']);
             toggleModal();
         }
 
         setLanguage('en');
 
-        document.querySelectorAll('a[href="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('data-i18n') === 'nav-book') {
                     e.preventDefault();
