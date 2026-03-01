@@ -11,6 +11,7 @@
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             background-color: #f5f5f5;
             color: #333;
+            scroll-behavior: smooth;
         }
         .concrete-texture {
             background-color: #e5e5e5;
@@ -37,7 +38,7 @@
             background-color: #f472b6;
         }
         .hero-min-h {
-            min-height: 85vh;
+            min-height: 90vh;
         }
         .fade-in {
             animation: fadeIn 1.5s ease-out;
@@ -46,7 +47,6 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom Select Styling */
         .lang-select {
             background: transparent;
             border: none;
@@ -55,6 +55,17 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             outline: none;
+        }
+        .image-placeholder {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
@@ -68,10 +79,10 @@
         
         <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-wider">
             <a href="#about" data-i18n="nav-about" class="hover:text-pink-400 transition">About</a>
+            <a href="#space" data-i18n="nav-space" class="hover:text-pink-400 transition">The Space</a>
             <a href="#classes" data-i18n="nav-classes" class="hover:text-pink-400 transition">Classes</a>
             <a href="#location" data-i18n="nav-access" class="hover:text-pink-400 transition">Access</a>
             
-            <!-- Language Switcher -->
             <div class="flex items-center space-x-2 border-l border-gray-300 pl-6 ml-2">
                 <select id="langSwitcher" class="lang-select font-semibold">
                     <option value="en">EN</option>
@@ -86,108 +97,157 @@
 
     <!-- Hero Section -->
     <section class="relative hero-min-h flex items-center justify-center pt-20 overflow-hidden concrete-texture">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center z-10">
-            <div class="fade-in">
+        <div class="absolute inset-0 z-0">
+            <!-- [Image: スクリーンショット 2026-03-01 195856.jpg - Interior view with sunlight] -->
+            <div class="w-full h-full image-placeholder" style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3))">
+                [Image: View from inside through glass - スクリーンショット 2026-03-01 195856.jpg]
+            </div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in bg-white/40 p-8 md:p-12 backdrop-blur-md rounded-sm border border-white/50 inline-block">
                 <h1 class="text-5xl md:text-7xl font-light leading-tight mb-6">
                     <span data-i18n="hero-title-1">Find Your</span> <br>
                     <span class="font-semibold italic accent-pink" data-i18n="hero-title-2">Inner Space</span>
                 </h1>
-                <p class="text-lg opacity-70 mb-8 max-w-md leading-relaxed" data-i18n="hero-desc">
+                <p class="text-lg opacity-90 mb-8 max-w-md leading-relaxed" data-i18n="hero-desc">
                     The silence of concrete and the openness of glass filled with light. A special place to breathe away from the hustle of District 7, HCMC.
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#classes" data-i18n="hero-btn" class="border border-black px-8 py-3 rounded-sm hover:bg-black hover:text-white transition">Explore Classes</a>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#classes" data-i18n="hero-btn" class="bg-black text-white px-8 py-3 rounded-sm hover:bg-pink-400 transition">Explore Classes</a>
                 </div>
             </div>
-            <div class="relative h-[500px] w-full bg-stone-300 rounded-sm shadow-2xl overflow-hidden group">
-                <div class="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
-                <div class="w-full h-full flex items-center justify-center text-stone-500 italic text-sm text-center px-10">
-                    [Image: Modern studio interior with concrete pillars and floor-to-ceiling glass windows]
-                </div>
-            </div>
+            <div></div>
         </div>
         <div class="absolute bottom-10 right-10 text-9xl font-bold opacity-5 pointer-events-none select-none">PIANA</div>
     </section>
 
-    <!-- Concept Section -->
+    <!-- Founders Section -->
     <section id="about" class="py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <div class="max-w-3xl mx-auto">
-                <span class="accent-pink font-semibold tracking-widest uppercase text-sm mb-4 block" data-i18n="concept-tag">Our Concept</span>
-                <h2 class="text-3xl md:text-4xl font-light mb-10" data-i18n="concept-title">Architecture of Silence and Harmony</h2>
-                <p class="text-lg text-gray-600 leading-relaxed mb-12" data-i18n="concept-desc">
-                    "piana" merges minimalist spatial design with the spirituality of yoga. Inorganic concrete and organic light. In this contrast, we provide a time to face yourself.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="p-8 border border-gray-100 bg-gray-50 hover:border-pink-200 transition">
-                        <h3 class="font-semibold mb-4 italic" data-i18n="card1-title">Modern</h3>
-                        <p class="text-sm text-gray-500" data-i18n="card1-desc">Latest props and urban, clean facilities.</p>
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative group">
+                    <div class="w-full h-[600px] image-placeholder overflow-hidden shadow-2xl">
+                        [Image: Studio Entrance and Founders - Gemini_Generated_Image_9bcbqt9bcbqt9bcb.jpg]
                     </div>
-                    <div class="p-8 border border-gray-100 bg-gray-50 hover:border-pink-200 transition">
-                        <h3 class="font-semibold mb-4 italic" data-i18n="card2-title">Minimal</h3>
-                        <p class="text-sm text-gray-500" data-i18n="card2-desc">Clear your mind in a space where everything unnecessary is stripped away.</p>
+                    <div class="absolute -bottom-6 -right-6 bg-accent-pink text-white p-6 hidden md:block">
+                        <p class="text-xs tracking-widest uppercase mb-1">Founders</p>
+                        <p class="font-semibold italic">Welcome to our space</p>
                     </div>
-                    <div class="p-8 border border-gray-100 bg-gray-50 hover:border-pink-200 transition">
-                        <h3 class="font-semibold mb-4 italic" data-i18n="card3-title">Mindful</h3>
-                        <p class="text-sm text-gray-500" data-i18n="card3-desc">Careful guidance that values every single breath.</p>
+                </div>
+                <div>
+                    <span class="accent-pink font-semibold tracking-widest uppercase text-sm mb-4 block" data-i18n="concept-tag">Our Concept</span>
+                    <h2 class="text-4xl font-light mb-8" data-i18n="concept-title">Architecture of Silence and Harmony</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-12" data-i18n="concept-desc">
+                        "piana" merges minimalist spatial design with the spirituality of yoga. Inorganic concrete and organic light. In this contrast, we provide a time to face yourself.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-semibold mb-2 italic" data-i18n="card1-title">Modern</h3>
+                            <p class="text-sm text-gray-500" data-i18n="card1-desc">Latest props and urban, clean facilities.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2 italic" data-i18n="card2-title">Minimal</h3>
+                            <p class="text-sm text-gray-500" data-i18n="card2-desc">Clear your mind in a space where everything unnecessary is stripped away.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Classes Section -->
+    <!-- The Space / Architecture Section -->
+    <section id="space" class="py-24 concrete-texture overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-light mb-4" data-i18n="space-title">The Architecture</h2>
+                <div class="w-20 h-1 bg-accent-pink mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="flex flex-col space-y-4">
+                    <div class="h-64 image-placeholder shadow-lg">
+                        [Image: Studio Elevation - スクリーンショット 2026-03-01 200046.jpg]
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50">Front Elevation</p>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <div class="h-64 image-placeholder shadow-lg">
+                        [Image: 3D Aerial View - スクリーンショット 2026-03-01 200023.jpg]
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50">3D Perspective</p>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <div class="h-64 image-placeholder shadow-lg">
+                        [Image: Floor Plan - スクリーンショット 2026-03-01 200054.jpg]
+                    </div>
+                    <p class="text-xs uppercase tracking-widest opacity-50">Floor Plan</p>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white/50 p-8 backdrop-blur-sm">
+                <p class="text-center italic opacity-70 leading-relaxed" data-i18n="space-desc">
+                    Our studio is designed with precision to optimize flow, light, and sound. Every pillar, every glass pane is placed to create an environment where energy can circulate freely.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Actual Classes) -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="columns-1 md:columns-3 gap-4 space-y-4">
+                <div class="image-placeholder h-80 overflow-hidden group">
+                    [Image: Class Standing - スクリーンショット 2026-03-01 195924.jpg]
+                </div>
+                <div class="image-placeholder h-60 overflow-hidden group">
+                    [Image: Detail Leg/Mat - スクリーンショット 2026-03-01 195839.jpg]
+                </div>
+                <div class="image-placeholder h-96 overflow-hidden group">
+                    [Image: Instructor Assist - スクリーンショット 2026-03-01 195831.jpg]
+                </div>
+                <div class="image-placeholder h-64 overflow-hidden group">
+                    [Image: Shavasana - スクリーンショット 2026-03-01 195904.jpg]
+                </div>
+                <div class="image-placeholder h-80 overflow-hidden group">
+                    [Image: Tree Pose Balance - スクリーンショット 2026-03-01 195916.jpg]
+                </div>
+                <div class="image-placeholder h-[450px] overflow-hidden group">
+                    [Image: Forward Fold Class - スクリーンショット 2026-03-01 195847.jpg]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Info Section -->
     <section id="classes" class="py-24 concrete-texture">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div>
-                    <h2 class="text-4xl font-light" data-i18n="classes-title">Classes</h2>
-                    <p class="accent-pink mt-2 italic" data-i18n="classes-subtitle">Choose your journey</p>
+                    <h2 class="text-4xl font-light" data-i18n="classes-title">Our Classes</h2>
+                    <p class="accent-pink mt-2 italic" data-i18n="classes-subtitle">Personalized guidance in a group setting</p>
                 </div>
-                <div class="hidden md:block text-sm opacity-50 uppercase tracking-tighter" data-i18n="scroll-hint">Scroll to explore</div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="group relative h-80 bg-white overflow-hidden">
-                    <div class="p-8 relative z-10">
-                        <h3 class="text-xl font-light mb-2">Hatha Yoga</h3>
-                        <p class="text-xs opacity-50">BASIC / ALL LEVELS</p>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <p class="text-sm mb-4" data-i18n="class1-desc">Hatha yoga for everyone. Synchronize breath and pose to balance mind and body.</p>
-                        <button class="text-xs font-bold border-b border-black" data-i18n="btn-more">VIEW MORE</button>
-                    </div>
-                    <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-pink-100 rounded-full opacity-20 group-hover:scale-150 transition duration-700"></div>
+                <div class="bg-white p-8 border border-stone-200 hover:border-pink-300 transition group cursor-pointer">
+                    <h3 class="text-xl font-light mb-4">Hatha</h3>
+                    <p class="text-sm text-gray-500 mb-6" data-i18n="class1-desc">Foundation and alignment focus.</p>
+                    <span class="text-xs font-bold border-b border-black">VIEW SCHEDULE</span>
                 </div>
-                <div class="group relative h-80 bg-stone-800 text-white overflow-hidden">
-                    <div class="p-8 relative z-10">
-                        <h3 class="text-xl font-light mb-2">Vinyasa Flow</h3>
-                        <p class="text-xs opacity-50 italic">DYNAMIC / INTERMEDIATE</p>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <p class="text-sm mb-4" data-i18n="class2-desc">Flowing movements. Boost energy and sharpen focus.</p>
-                        <button class="text-xs font-bold border-b border-white" data-i18n="btn-more">VIEW MORE</button>
-                    </div>
+                <div class="bg-stone-800 text-white p-8 hover:bg-stone-700 transition group cursor-pointer">
+                    <h3 class="text-xl font-light mb-4">Vinyasa</h3>
+                    <p class="text-sm opacity-70 mb-6" data-i18n="class2-desc">Fluid and dynamic flow.</p>
+                    <span class="text-xs font-bold border-b border-white">VIEW SCHEDULE</span>
                 </div>
-                <div class="group relative h-80 bg-white overflow-hidden border border-stone-200">
-                    <div class="p-8 relative z-10">
-                        <h3 class="text-xl font-light mb-2">Yin & Restore</h3>
-                        <p class="text-xs opacity-50">RELAX / ALL LEVELS</p>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <p class="text-sm mb-4" data-i18n="class3-desc">Deep relaxation. Loosen tissues and release chronic fatigue.</p>
-                        <button class="text-xs font-bold border-b border-black" data-i18n="btn-more">VIEW MORE</button>
-                    </div>
+                <div class="bg-white p-8 border border-stone-200 hover:border-pink-300 transition group cursor-pointer">
+                    <h3 class="text-xl font-light mb-4">Yin</h3>
+                    <p class="text-sm text-gray-500 mb-6" data-i18n="class3-desc">Deep relaxation and connective tissue health.</p>
+                    <span class="text-xs font-bold border-b border-black">VIEW SCHEDULE</span>
                 </div>
-                <div class="group relative h-80 bg-accent-pink text-white overflow-hidden">
-                    <div class="p-8 relative z-10">
-                        <h3 class="text-xl font-light mb-2">Meditation</h3>
-                        <p class="text-xs opacity-50">MIND / BEGINNER</p>
-                    </div>
-                    <div class="absolute bottom-0 left-0 w-full p-8 opacity-0 group-hover:opacity-100 transition duration-500 transform translate-y-4 group-hover:translate-y-0">
-                        <p class="text-sm mb-4" data-i18n="class4-desc">Time to look within in silence. Mindfulness for the modern person.</p>
-                        <button class="text-xs font-bold border-b border-white" data-i18n="btn-more">VIEW MORE</button>
-                    </div>
+                <div class="bg-accent-pink text-white p-8 hover:opacity-90 transition group cursor-pointer">
+                    <h3 class="text-xl font-light mb-4">Meditation</h3>
+                    <p class="text-sm opacity-90 mb-6" data-i18n="class4-desc">Finding silence within.</p>
+                    <span class="text-xs font-bold border-b border-white">VIEW SCHEDULE</span>
                 </div>
             </div>
         </div>
@@ -214,11 +274,6 @@
                         <p>Mon - Fri: 6:30 - 20:30</p>
                         <p>Sat - Sun: 8:00 - 18:00</p>
                     </div>
-                    <div>
-                        <p class="text-xs uppercase tracking-widest mb-1 opacity-50" data-i18n="label-contact">Contact</p>
-                        <p>Tel: +84 (0) 123 456 789</p>
-                        <p>Email: hello@pianayoga.com</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -228,10 +283,6 @@
     <footer class="bg-black text-white py-12 border-t border-stone-800">
         <div class="container mx-auto px-6 flex flex-col md:row justify-between items-center text-sm opacity-50">
             <p>&copy; 2026 piana YOGA STUDIO. All rights reserved.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" data-i18n="footer-privacy">Privacy Policy</a>
-                <a href="#" data-i18n="footer-terms">Terms of Service</a>
-            </div>
         </div>
     </footer>
 
@@ -245,12 +296,6 @@
             <form class="space-y-4">
                 <input type="text" data-i18n-placeholder="placeholder-name" placeholder="Full Name" class="w-full border-b border-gray-200 py-2 focus:border-pink-400 outline-none">
                 <input type="email" data-i18n-placeholder="placeholder-email" placeholder="Email Address" class="w-full border-b border-gray-200 py-2 focus:border-pink-400 outline-none">
-                <select class="w-full border-b border-gray-200 py-2 focus:border-pink-400 outline-none">
-                    <option disabled selected data-i18n="option-class">Select Class</option>
-                    <option>Hatha Yoga</option>
-                    <option>Vinyasa Flow</option>
-                    <option>Yin Yoga</option>
-                </select>
                 <button type="button" onclick="handleBooking()" class="w-full bg-black text-white py-4 mt-6 hover:bg-pink-400 transition" data-i18n="btn-request">REQUEST BOOKING</button>
             </form>
         </div>
@@ -260,6 +305,7 @@
         const translations = {
             en: {
                 "nav-about": "About",
+                "nav-space": "The Space",
                 "nav-classes": "Classes",
                 "nav-access": "Access",
                 "nav-book": "Book Now",
@@ -273,34 +319,29 @@
                 "card1-title": "Modern",
                 "card1-desc": "Latest props and urban, clean facilities.",
                 "card2-title": "Minimal",
-                "card2-desc": "Clear your mind in a space where everything unnecessary is stripped away.",
-                "card3-title": "Mindful",
-                "card3-desc": "Careful guidance that values every single breath.",
-                "classes-title": "Classes",
-                "classes-subtitle": "Choose your journey",
-                "scroll-hint": "Scroll to explore",
-                "class1-desc": "Hatha yoga for everyone. Synchronize breath and pose to balance mind and body.",
-                "class2-desc": "Flowing movements. Boost energy and sharpen focus.",
-                "class3-desc": "Deep relaxation. Loosen tissues and release chronic fatigue.",
-                "class4-desc": "Time to look within in silence. Mindfulness for the modern person.",
-                "btn-more": "VIEW MORE",
+                "card2-desc": "Everything unnecessary is stripped away.",
+                "space-title": "The Architecture",
+                "space-desc": "Our studio is designed with precision to optimize flow, light, and sound. Every pillar, every glass pane is placed to create an environment where energy can circulate freely.",
+                "classes-title": "Our Classes",
+                "classes-subtitle": "Personalized guidance in a group setting",
+                "class1-desc": "Foundation and alignment focus.",
+                "class2-desc": "Fluid and dynamic flow.",
+                "class3-desc": "Deep relaxation and connective tissue health.",
+                "class4-desc": "Finding silence within.",
                 "visit-tag": "Visit Us",
                 "visit-title": "Quiet area in District 7",
                 "label-address": "Address",
                 "address-note": "(Near Crescent Mall area)",
                 "label-hours": "Open Hours",
-                "label-contact": "Contact",
-                "footer-privacy": "Privacy Policy",
-                "footer-terms": "Terms of Service",
                 "modal-title": "Reserve a Spot",
                 "placeholder-name": "Full Name",
                 "placeholder-email": "Email Address",
-                "option-class": "Select Class",
                 "btn-request": "REQUEST BOOKING",
-                "alert-success": "Booking request received. We will contact you soon."
+                "alert-success": "Booking request received."
             },
             vi: {
                 "nav-about": "Về chúng tôi",
+                "nav-space": "Không gian",
                 "nav-classes": "Lớp học",
                 "nav-access": "Vị trí",
                 "nav-book": "Đặt lịch ngay",
@@ -308,37 +349,31 @@
                 "hero-title-2": "Không gian bên trong",
                 "hero-desc": "Sự tĩnh lặng của bê tông và sự cởi mở của kính ngập tràn ánh sáng. Một nơi đặc biệt để hít thở, tách biệt khỏi sự xô bồ của Quận 7.",
                 "hero-btn": "Khám phá các lớp",
-                "concept-tag": "Triết lý của chúng tôi",
+                "concept-tag": "Triết lý",
                 "concept-title": "Kiến trúc của sự Tĩnh lặng và Hòa hợp",
                 "concept-desc": "\"piana\" kết hợp thiết kế không gian tối giản với sự tĩnh tại của yoga. Bê tông vô cơ và ánh sáng hữu cơ. Trong sự tương phản này, chúng tôi mang đến thời gian để bạn đối diện với chính mình.",
                 "card1-title": "Hiện đại",
-                "card1-desc": "Dụng cụ mới nhất và cơ sở vật chất sạch sẽ, phong cách đô thị.",
+                "card1-desc": "Dụng cụ mới nhất và cơ sở vật chất sạch sẽ.",
                 "card2-title": "Tối giản",
-                "card2-desc": "Làm sạch tâm trí trong không gian nơi mọi thứ không cần thiết đều được lược bỏ.",
-                "card3-title": "Tâm thế",
-                "card3-desc": "Sự hướng dẫn tận tâm, trân trọng từng hơi thở của bạn.",
-                "classes-title": "Lớp học",
-                "classes-subtitle": "Chọn hành trình của bạn",
-                "scroll-hint": "Cuộn để khám phá",
-                "class1-desc": "Hatha yoga cho mọi người. Kết hợp hơi thở và tư thế để cân bằng thân tâm.",
-                "class2-desc": "Chuyển động nhịp nhàng. Nạp năng lượng và rèn luyện sự tập trung.",
-                "class3-desc": "Thư giãn sâu. Thả lỏng cơ thể và giải tỏa mệt mỏi kéo dài.",
-                "class4-desc": "Thời gian để nhìn lại bản thân trong tĩnh lặng. Chánh niệm cho người hiện đại.",
-                "btn-more": "XEM THÊM",
+                "card2-desc": "Lược bỏ mọi thứ không cần thiết.",
+                "space-title": "Kiến trúc",
+                "space-desc": "Studio của chúng tôi được thiết kế chính xác để tối ưu hóa dòng chảy, ánh sáng và âm thanh. Mọi cột trụ, mọi tấm kính đều được đặt để tạo ra môi trường năng lượng tự do.",
+                "classes-title": "Các lớp học",
+                "classes-subtitle": "Sự hướng dẫn tận tâm trong không gian nhóm",
+                "class1-desc": "Tập trung vào nền tảng và căn chỉnh.",
+                "class2-desc": "Dòng chảy uyển chuyển và năng động.",
+                "class3-desc": "Thư giãn sâu và sức khỏe mô liên kết.",
+                "class4-desc": "Tìm kiếm sự tĩnh lặng bên trong.",
                 "visit-tag": "Ghé thăm",
                 "visit-title": "Khu vực yên tĩnh tại Quận 7",
                 "label-address": "Địa chỉ",
                 "address-note": "(Gần khu vực Crescent Mall)",
                 "label-hours": "Giờ mở cửa",
-                "label-contact": "Liên hệ",
-                "footer-privacy": "Chính sách bảo mật",
-                "footer-terms": "Điều khoản dịch vụ",
                 "modal-title": "Đặt chỗ ngay",
                 "placeholder-name": "Họ và tên",
                 "placeholder-email": "Địa chỉ Email",
-                "option-class": "Chọn lớp học",
                 "btn-request": "GỬI YÊU CẦU",
-                "alert-success": "Đã nhận được yêu cầu. Chúng tôi sẽ liên hệ sớm nhất."
+                "alert-success": "Đã nhận được yêu cầu."
             }
         };
 
@@ -349,14 +384,12 @@
                     element.innerText = translations[lang][key];
                 }
             });
-
             document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
                 const key = element.getAttribute('data-i18n-placeholder');
                 if (translations[lang][key]) {
                     element.placeholder = translations[lang][key];
                 }
             });
-            
             document.documentElement.lang = lang;
         }
 
@@ -374,10 +407,8 @@
             toggleModal();
         }
 
-        // Initialize with English
         setLanguage('en');
 
-        // Global links for booking
         document.querySelectorAll('a[href="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('data-i18n') === 'nav-book') {
